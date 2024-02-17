@@ -8,6 +8,20 @@ const taskList = document.getElementById("taskList");
 const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 
+// New function to display tasks
+function displayTasks() {
+    tasks.forEach(task => {
+        addTaskToList(task);
+    });
+}
+ 
+// Call the function when the page loads
+displayTasks();
+ 
+
+
+
+
 let value = localStorage.getItem("tasks");
 console.log(typeof value);
 
@@ -29,8 +43,7 @@ function addTaskToList(taskText) {
 
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent="Delete";
-    deleteBtn.classList.add("deleteBtn");
+    deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';   
     deleteBtn.addEventListener("click", function() {
         const index = tasks.indexOf(taskText);
         if (index !== -1) {
